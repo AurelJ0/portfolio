@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for portfolio-0ep84a on 2025-04-03T09:36:16Z
+# fly.toml app configuration file generated for portfolio-aurelien-josso on 2025-04-03T09:45:33Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'portfolio-0ep84a'
+app = 'portfolio-aurelien-josso'
 primary_region = 'cdg'
 
 [build]
