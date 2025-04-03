@@ -1,0 +1,355 @@
+/* Effet de survol */
+.parcours-card {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+.parcours-card:hover {
+    transform: scale(1.05);
+}
+
+/* Styles de la pop-up */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(122, 122, 122, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.popup {
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    z-index: 10000;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 70px; /* Ajoutez un padding en bas pour laisser de l'espace pour le bouton */
+}
+
+/* Carte individuelle */
+.popup .card {
+    background: #ffffffc1;
+    backdrop-filter: blur(10px); /* Effet de flou */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    break-inside: avoid; /* Empêche les cartes d'être coupées entre les colonnes */
+}
+
+.popup .card img {
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Grille de cartes */
+.popup .card-container {
+    column-count: 2;
+    column-gap: 20px;
+    width: 100%;
+}
+
+.popup h3 {
+    color: #1e30f4;
+    margin-bottom: 15px;
+}
+
+/* Style pour le bouton de fermeture */
+.close-btn {
+    position: sticky;
+    bottom: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    margin-top: 20px;
+    cursor: pointer;
+    color: #FF4C4C;
+    background: white;
+    border: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn:hover {
+    color: white;
+    background: #FF4C4C;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.close-btn:focus {
+    outline: none;
+}
+
+/* Style pour la grille des images */
+.lycee-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.lycee-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.large-image {
+    width: 80%;
+    height: auto;
+}
+
+.bts-sio-card p, .bts-sio-card ul, .bts-sio-card li {
+    font-size: 0.9em !important;
+}
+
+/* Empêcher le scroll de l'arrière-plan */
+.body-no-scroll {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    padding-right: 17px;
+}
+
+/* Media Query pour les petits écrans */
+@media (max-width: 768px) {
+    .popup {
+        max-width: 90%;
+    }
+}
+
+/* Media Query pour les petits écrans */
+@media (max-width: 768px) {
+    .popup .card-container {
+        column-count: 1; /* Une seule colonne sur les petits écrans */
+    }
+}
+
+@media (max-height: 500px) {
+    .close-btn {
+        position: static;
+        transform: none;
+        margin: 20px auto 0;
+    }
+}
+
+.gendarmerie-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.gendarmerie-img-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gendarmerie-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Ajustements spécifiques pour chaque colonne */
+.gendarmerie-img-container:nth-child(3),
+.gendarmerie-img-container:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.gendarmerie-img-container:nth-child(3) .gendarmerie-img:first-child,
+.gendarmerie-img-container:nth-child(4) .gendarmerie-img:first-child {
+    margin-bottom: auto;
+}
+
+.gendarmerie-img-container:nth-child(3) .gendarmerie-img:last-child,
+.gendarmerie-img-container:nth-child(4) .gendarmerie-img:last-child {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* Media queries pour les écrans plus petits et format 4:3 */
+@media (max-width: 768px) {
+    .gendarmerie-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        gap: 25px;
+    }
+
+    .gendarmerie-img {
+        margin-bottom: 10px;
+    }
+
+     /* Rétablit les ajustements pour les grands écrans si nécessaire */
+     .gendarmerie-img-container:nth-child(2) .gendarmerie-img:last-child {
+        margin-top: -32px;
+        margin-bottom: 153px;
+    }
+
+    .gendarmerie-img-container:nth-child(3) .gendarmerie-img:last-child {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+}
+
+/* Ajustements spécifiques pour le format 4:3 et les écrans plus larges */
+@media (min-width: 769px) and (aspect-ratio: 4/3) {
+    .gendarmerie-grid {
+        max-width: 500px;
+        gap: 20px;
+    }
+
+    /* Rétablit les ajustements pour les grands écrans si nécessaire */
+    .gendarmerie-img-container:nth-child(3) .gendarmerie-img:last-child {
+        margin-top: -170px;
+    }
+
+    .gendarmerie-img-container:nth-child(4) .gendarmerie-img:last-child {
+        margin-top: -17px;
+    }
+}
+
+/* Ajustements spécifiques pour chaque colonne */
+.gendarmerie-img-container:nth-child(3) .gendarmerie-img:last-child {
+    margin-top: -170px; /* Rapproche l'image 3 de l'image 1, ajustez selon vos besoins */
+    margin-bottom: 0; /* Supprime la marge en bas de la dernière image */
+}
+
+.gendarmerie-img-container:nth-child(4) .gendarmerie-img:last-child {
+    margin-top: -17px; /* Pousse l'image 4 vers le bas */
+    margin-bottom: 0; /* Supprime la marge en bas de la dernière image */
+}
+
+.ldv-logo {
+    max-width: 100%;
+    height: auto;
+    width: 500px; /* ou la largeur que vous préférez pour les grands écrans */
+}
+
+.wt-logo {
+    max-width: 100%;
+    height: auto;
+    width: 300px; /* ou la largeur que vous préférez pour les grands écrans */
+}
+
+/* Media queries pour rendre l'image responsive */
+@media (max-width: 1200px) {
+    .ldv-logo {
+        width: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .ldv-logo {
+        width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ldv-logo {
+        width: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ldv-logo {
+        width: 200px;
+    }
+}
+
+
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes de même taille */
+    gap: 15px; /* Espacement entre les éléments */
+    align-items: center; /* Aligner tous les éléments au centre de la grille */
+}
+
+.tool-logo {
+    display: flex; /* Utilisation de Flexbox pour l'alignement horizontal */
+    justify-content: center; /* Aligner les éléments horizontalement (au centre) */
+    align-items: center; /* Aligner les éléments verticalement (au centre) */
+    flex-direction: column; /* Par défaut, la direction est verticale, donc je l'ai défini ici pour ajuster l'alignement */
+    text-align: center;
+}
+
+.tool-img {
+    width: 100%;
+    max-width: 100px; /* Ajuste l'image à la taille maximale de son conteneur */
+    height: auto; /* Garde les proportions de l'image */
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.evolucare-logo {
+    margin-top: 0; /* Enlève l'écart pour l'aligner avec les autres logos */
+    margin-right: 10px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes de même taille */
+    gap: 20px; /* Espacement entre les éléments */
+    align-items: center; /* Aligner tous les éléments au centre de la grille */
+}
+
+.tool-logo {
+    display: flex; /* Utilisation de Flexbox pour l'alignement horizontal */
+    justify-content: center; /* Aligner les éléments horizontalement (au centre) */
+    align-items: center; /* Aligner les éléments verticalement (au centre) */
+    flex-direction: column; /* Affichage des éléments de façon verticale */
+    text-align: center;
+}
+
+.tool-img {
+    width: 90%; /* Ajuste la taille des images selon la largeur du conteneur */
+    max-width: 150px; /* Limite la taille maximale à 200px */
+    height: auto; /* Conserve les proportions de l'image */
+    margin-bottom: 10px;
+}
+
+.evolucare-logo {
+    margin-top: 0; /* Enlève l'écart pour l'aligner avec les autres logos */
+    margin-right: 10px;
+}
+
+/* Responsive : pour les petits écrans */
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+    }
+
+    .tool-img {
+        max-width: 150px; /* Limite la taille maximale des images sur les petits écrans */
+    }
+}
+
+
+

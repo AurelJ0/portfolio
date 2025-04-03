@@ -1,0 +1,63 @@
+.language-level {
+    display: flex;
+    flex-direction: column; /* Empile les éléments verticalement */
+    gap: 6px;
+  }
+  
+
+.dots {
+  display: flex;
+  align-items: left;
+  gap: 6px; /* Réduire l'espace entre les points */
+}
+  
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    opacity: 0.3; /* Points inactifs */
+  }
+  
+  .dot.active {
+    opacity: 1; /* Points actifs bien visibles */
+  }
+  
+  /* Dégradé progressif sur les 6 points */
+  .dot:nth-child(1) { background-color: #4406ee; } /* Début du dégradé */
+  .dot:nth-child(2) { background-color: #6930d3; }
+  .dot:nth-child(3) { background-color: #7a35cf; }
+  .dot:nth-child(4) { background-color: #8b3acb; }
+  .dot:nth-child(5) { background-color: #9c40c7; }
+  .dot:nth-child(6) { background-color: #ab23a6; } /* Fin du dégradé */
+
+
+.arrow {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);;
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.5s ease-in-out;
+
+}
+
+.arrow span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid #3f3f3f;
+  border-right: 2px solid #3f3f3f;
+  transform: rotate(45deg);
+  animation: bounce 2.5s infinite;
+}
+@keyframes bounce {
+  0%, 100% { 
+    transform: rotate(45deg) translate(-10px,-10px);
+    opacity: 0;
+  }
+  50% { 
+    transform: rotate(45deg) translate(10px,10px); 
+    opacity: 1;
+  }
+}
